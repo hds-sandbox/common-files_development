@@ -1,0 +1,17 @@
+channels:
+  - conda-forge
+  - anaconda
+dependencies:
+  - jupyterlab
+  - nbconvert
+  - nteract_on_jupyter
+  - jupyter-resource-usage
+  - jupyterlab-topbar-text
+  - autopep8
+  - isort
+  - yapf
+  - black
+  - jupyterlab_code_formatter
+  - jupyterlab-git
+  - jupyterlab-lsp
+  - jupyter_bokeh
