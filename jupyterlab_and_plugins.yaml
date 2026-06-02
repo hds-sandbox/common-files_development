@@ -4,7 +4,7 @@ channels:
 dependencies:
   - jupyterlab
   - nbconvert-webpdf
-  - jupyterlab_nbconvert_nocode
+  - jupyterlab-nbconvert-nocode
   - nteract_on_jupyter
   - jupyter-resource-usage
   - jupyterlab-topbar-text
@@ -12,7 +12,6 @@ dependencies:
   - isort
   - yapf
   - black
-  - jupyterlab_code_formatter
   - jupyterlab-git
   - jupyterlab-lsp
   - jupyter_bokeh
