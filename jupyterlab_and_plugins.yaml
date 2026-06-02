@@ -15,3 +15,5 @@ dependencies:
   - jupyterlab-git
   - jupyterlab-lsp
   - jupyter_bokeh
+  - pip:
+    - jupyterlab-quarto
