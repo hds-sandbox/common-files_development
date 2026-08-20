@@ -11,5 +11,6 @@ dependencies:
   - black
   - jupyterlab-git
   - jupyter_bokeh
-  - pip:
-    - python-lsp-server[all]
+  - jupyter-lsp-python
+  - jupyter-lsp-r
+  - pip
