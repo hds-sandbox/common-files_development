@@ -10,12 +10,6 @@ dependencies:
   - yapf
   - black
   - jupyterlab-git
-  - jupyterlab-lsp
   - jupyter_bokeh
-  - jupyter-lsp
-  - jupyter-lsp-r
-  - jupyter-lsp-python
-  - jupyter-lsp-latex
-  - jupyter-lsp-python-plugins
   - pip:
-    - jupyterlab-quarto
+    - python-lsp-server[all]
