@@ -3,9 +3,6 @@ channels:
   - anaconda
 dependencies:
   - jupyterlab
-  - nbconvert-webpdf
-  - jupyterlab-nbconvert-nocode
-#  - nteract_on_jupyter
   - jupyter-resource-usage
   - jupyterlab-topbar-text
   - autopep8
