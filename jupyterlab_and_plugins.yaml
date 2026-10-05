@@ -16,4 +16,3 @@ dependencies:
   - pip
   - jupyterquiz
   - jupyterlab-quarto
-  - jupyterlab-code-formatter
