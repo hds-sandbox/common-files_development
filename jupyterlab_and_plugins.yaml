@@ -15,4 +15,5 @@ dependencies:
   - jupyter-lsp-r
   - pip
   - jupyterquiz
-  - jupyterlab-quarto
+  - pip:
+    - jupyterlab-quarto
