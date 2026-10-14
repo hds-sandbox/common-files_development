@@ -5,6 +5,7 @@ dependencies:
   - jupyterlab
   - jupyter-resource-usage
   - jupyterlab-topbar-text
+  - jupyter-black
   - autopep8
   - isort
   - yapf
