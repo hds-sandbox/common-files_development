@@ -11,8 +11,6 @@ hide:
 
 The app is a **Docker image** that you can use on a different machine or your own computer. To use it, you should be familiar with Docker/Singularity. Simply pull the image and run the container using the command `start-app -c "__COURSE_NAME__"` (example below).
 
-Link: https://hub.docker.com/r/hdssandbox/__APP_NAME__. 
-
 #### Pull docker image 
 ```{.bash .code-overflow-wrap} 
 # docker
@@ -28,5 +26,8 @@ You can customize the port by using the `-p` option to select a different port f
 - Add `-v` /path/to/data to bind your local data/notebooks to the container
    
 ```{.bash .code-overflow-wrap}
+#docker
 docker run --rm -p $PORT:$PORT hdssandbox/__APP_NAME__ start-app -c "__COURSE_NAME__" -p $PORT
+#apptainer
+apptainer exec --rm --writable-tmpfs --fakeroot --pwd /work/ --bind /path/to/data:/work/ app.sif start-app -c "__COURSE_NAME__" -p $PORT
 ```
