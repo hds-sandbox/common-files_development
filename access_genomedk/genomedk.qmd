@@ -1,0 +1,54 @@
+---
+title: GenomeDK
+---
+
+If you are using GenomeDK as the HPC of your choice, you can use the pre-packaged Docker container, which contains JupyterLab and the necessary packages to run all the notebooks for our app. GenomeDK comes with 'Singularity', which can import and execute Docker containers, ensuring full reproducibility of the analysis. Instructions for using the container through the terminal or desktop are available.
+
+:::{.callout-warning title="Technical prerequisites"}
+- if you do not yet have an account on GenomeDK, please get one [here](https://console.genome.au.dk/user-requests/create/) and follow the instructions for the 2-factor authentication.
+
+- you need to have (or be part of) an active project on GenomeDK. This ensures you can get some computing resources to run the course material. [Follow these instructions to request a project](https://genome.au.dk/docs/projects-and-accounting/#requesting-a-project). Please do not create a project only to run this course, but use an existing project folder.
+
+- In Windows and the Powershell command line, commands might need `.exe` at the end, such as `ssh.exe` instead of `ssh`. Newer versions of Windows do not require that, though.
+:::
+
+Follow the instructions below to get started.
+
+:::{.callout-warning}
+Whether you're using the terminal or desktop, **avoid working directly in your home folder `/home/username`**, as this has a limit of 100GB of space available. Work instead inside a previously established project folder. If you do not have a project, [remember to request one](https://genome.au.dk/docs/projects-and-accounting/#requesting-a-project).
+:::
+
+## Using GenomeDK Desktop
+
+We recommend using [GenomeDK Desktop](https://desktop.genome.au.dk/) - a browser-based virtual desktop solution. Follow these steps to get the app running:
+
+1. [Login to GenomeDK Desktop](https://desktop.genome.au.dk/).
+2. Open a terminal and navigate to or create a new folder, then pull the Docker image of the app.
+
+```{.bash .code-overflow-wrap}
+apptainer pull app.sif docker://hdssandbox/__APP_NAME__
+```
+
+3. If you need to download the data and notebooks for the course, run in background the container with the command below. You will need to wait for the download to finish. If you already have the data and notebooks, you can skip this step. `DATA_AND_NOTEBOOKS_FOLDER` is the folder where you want to download the data and notebooks. You can create a new folder for this purpose.
+
+    ```{.bash .code-overflow-wrap}
+    nohup apptainer exec --pwd /work/ --bind DATA_AND_NOTEBOOKS_FOLDER:/work/ app.sif start-app -c __COURSE_NAME__ -d > download.log 2>&1 &
+    ```
+
+    The download is finished when `download.log` ends with `Download complete`. You can check it with `tail download.log`.
+
+4. Execute the course material with the command below. You will need to wait for the container to start. The command will provide a link to open in your browser, which includes the node name and port number (e.g., cn-1040:8787).
+
+```{.bash .code-overflow-wrap}
+srun --mem=MEMORYg --cores=CORES --time=HOURS:0:0 --account=YOUR_PROJECT --pty apptainer exec --writable-tmpfs --fakeroot --pwd /work/ --bind DATA_AND_NOTEBOOKS_FOLDER:/work/ app.sif start-app -c __COURSE_NAME__ -p $UID
+```
+
+Choose MEMORY, CORES, HOURS, and YOUR_PROJECT according to your needs. Remember DATA_AND_NOTEBOOKS_FOLDER is the folder where you downloaded the data and notebooks.
+
+5. On the terminal you will see a link containing the node number (e.g., cn-1040:8787). Click on the link with Ctrl+Click. You will see the JupyterLab interface.
+
+:::{.callout-warning}
+- If the browser shows an error about _xmrf, it is due to old cookies in your browser. Refresh until the error disappears or delete the cookies.
+- If you lose your internet connection, the course material will still be up and running. You only need to reconnect to desktop.genome.au.dk 
+- Do you want to work again on the course material, or recover some analysis? Everything is saved in the folder you were working in. Next time, follow the whole procedure again without downloading again in steps 2 and 3.
+:::
